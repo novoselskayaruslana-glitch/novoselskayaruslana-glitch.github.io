@@ -1,733 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ruslana Novoselska</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruslana Novoselska — Marketing Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#141414;
+  --paper:#F2EDE4;
+  --green:#7CFF4F;
+  --yellow:#FFE566;
+  --red:#FF4444;
+  --white:#FFFFFF;
+  --muted:#6B6B6B;
+  --border:rgba(242,237,228,0.12);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--paper);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--green);color:#000}
 
-    :root {
-      --bg: #f7f4ef;
-      --surface: #eeebe4;
-      --text: #1c1a16;
-      --muted: #8c8579;
-      --gold: #a67c4e;
-      --gold-dim: rgba(166,124,78,0.08);
-      --border: rgba(28,26,22,0.1);
-    }
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.4rem 2.5rem;
+  mix-blend-mode:normal;
+}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.05em;color:var(--paper);opacity:0.6}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--paper);opacity:0.5;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-cta{
+  font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;
+  border:1px solid var(--paper);padding:0.5rem 1.2rem;
+  opacity:0.5;transition:all .2s;
+}
+.nav-cta:hover{background:var(--paper);color:var(--bg);opacity:1}
 
-    html { scroll-behavior: smooth; }
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  padding:6rem 2rem 4rem;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
 
-    body {
-      font-family: 'Epilogue', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.7;
-      overflow-x: hidden;
-      cursor: none;
-    }
+.hero-grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(242,237,228,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,237,228,0.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;
+}
 
-    .cursor {
-      width: 10px; height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-    }
-    .cursor-ring {
-      width: 36px; height: 36px;
-      border: 1px solid rgba(166,124,78,0.4);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-    }
+.hero-name{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(5rem, 16vw, 18rem);
+  line-height:0.88;
+  letter-spacing:-0.01em;
+  text-transform:uppercase;
+  color:var(--white);
+  position:relative;
+  z-index:2;
+  user-select:none;
+}
+.hero-name .line2{color:transparent;-webkit-text-stroke:2px var(--paper)}
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 2rem 3.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.hero-sub{
+  margin-top:2.5rem;
+  font-size:clamp(0.85rem, 1.3vw, 1rem);
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  position:relative;z-index:2;
+}
 
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: var(--text);
-      text-decoration: none;
-    }
+.hero-bottom{
+  position:absolute;bottom:2.5rem;left:2.5rem;right:2.5rem;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  z-index:2;
+}
+.hero-location{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.7rem;color:var(--muted);letter-spacing:0.06em;
+}
+.hero-scroll{
+  font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);display:flex;align-items:center;gap:0.6rem;
+}
+.hero-scroll::after{content:'↓';font-size:1rem;animation:bounce 1.8s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.25s;
-    }
-    .nav-links a:hover { color: var(--gold); }
+/* STICKER BADGES */
+.badge{
+  position:absolute;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.06em;
+  z-index:3;cursor:default;user-select:none;
+  transition:transform .3s ease;
+}
+.badge:hover{transform:scale(1.05) !important}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 3.5rem 5rem;
-      position: relative;
-      overflow: hidden;
-    }
+.badge-pill{
+  border-radius:100px;padding:0.55rem 1.3rem;
+  font-size:0.72rem;white-space:nowrap;
+  border:2px solid currentColor;
+}
+.badge-round{
+  border-radius:50%;
+  font-size:0.6rem;line-height:1.3;text-align:center;
+  display:flex;flex-direction:column;
+}
 
-    .hero-bg-text {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(18rem, 28vw, 32rem);
-      font-weight: 900;
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(166,124,78,0.12);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-      animation: driftSlow 22s ease-in-out infinite alternate;
-    }
+.b-green{background:var(--green);color:#000;border-color:var(--green)}
+.b-yellow{background:var(--yellow);color:#000;border-color:var(--yellow)}
+.b-red{background:var(--red);color:#fff;border-color:var(--red)}
+.b-outline{background:transparent;color:var(--paper);border-color:var(--paper)}
+.b-white{background:var(--white);color:#000;border-color:var(--white)}
 
-    @keyframes driftSlow {
-      from { transform: translate(-52%, -48%) rotate(-1deg); }
-      to   { transform: translate(-48%, -52%) rotate(1deg); }
-    }
+/* Badge positions + rotations */
+.badge-1{top:18%;left:4%;transform:rotate(-12deg)}
+.badge-2{top:24%;left:14%;transform:rotate(6deg)}
+.badge-3{top:14%;right:5%;transform:rotate(8deg)}
+.badge-4{top:30%;right:8%;transform:rotate(-5deg)}
+.badge-5{bottom:28%;left:5%;transform:rotate(10deg)}
+.badge-6{bottom:22%;right:6%;transform:rotate(-8deg)}
+.badge-7{bottom:32%;left:18%;transform:rotate(-4deg)}
+.badge-8{top:42%;right:3%;transform:rotate(14deg)}
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: end;
-      position: relative;
-      z-index: 2;
-    }
+/* TICKER */
+.ticker{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:0.9rem 0;overflow:hidden;white-space:nowrap;
+}
+.ticker-track{display:inline-flex;animation:ticker 22s linear infinite}
+.ticker-item{
+  display:inline-flex;align-items:center;gap:1.2rem;padding:0 1.8rem;
+  font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);
+}
+.ticker-star{color:var(--green);font-size:0.9rem}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-    .hero-tag::before {
-      content: '';
-      display: block;
-      width: 28px; height: 1px;
-      background: var(--gold);
-    }
+/* WORK */
+.section{padding:7rem 2.5rem}
+.section-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--green);margin-bottom:1.2rem;
+}
+.section-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(2.8rem,6vw,6rem);
+  text-transform:uppercase;line-height:0.92;
+  margin-bottom:4rem;
+}
+.section-title em{color:transparent;-webkit-text-stroke:1px var(--paper);font-style:normal}
 
-    .hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3.5rem, 6vw, 7rem);
-      font-weight: 700;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-    }
+/* Project list */
+.project-list{display:flex;flex-direction:column;border-top:1px solid var(--border)}
+.project-row{
+  display:grid;
+  grid-template-columns:56px 1fr auto;
+  gap:2rem;align-items:center;
+  padding:2.2rem 1rem;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+  cursor:pointer;
+  transition:background .3s;
+}
+.project-row::before{
+  content:'';position:absolute;inset:0;
+  background:rgba(124,255,79,0.05);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.project-row:hover::before{transform:scaleX(1)}
 
-    .hero-name .line { display: block; overflow: hidden; }
-    .hero-name .line span {
-      display: block;
-      animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
-    .hero-name .line:nth-child(1) span { animation-delay: 0.1s; }
-    .hero-name .line:nth-child(2) span { animation-delay: 0.22s; font-style: italic; color: var(--gold); }
+.project-n{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.65rem;letter-spacing:0.1em;color:var(--muted);
+  position:relative;z-index:1;
+}
+.project-info{position:relative;z-index:1}
+.project-name{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(1.6rem,3.5vw,2.8rem);
+  text-transform:uppercase;line-height:1;
+  transition:color .25s;
+}
+.project-row:hover .project-name{color:var(--green)}
+.project-desc{
+  font-size:0.8rem;color:var(--muted);margin-top:0.3rem;
+  max-width:50ch;
+}
+.project-right{
+  display:flex;flex-direction:column;align-items:flex-end;gap:0.7rem;
+  position:relative;z-index:1;
+}
+.project-tag{
+  font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;
+  border:1px solid var(--border);padding:0.3rem 0.8rem;
+  color:var(--muted);white-space:nowrap;
+}
+.project-tag.live{border-color:var(--green);color:var(--green)}
+.project-arr{
+  font-size:1.6rem;color:var(--green);
+  opacity:0;transform:translateX(-8px);
+  transition:opacity .25s,transform .25s;
+}
+.project-row:hover .project-arr{opacity:1;transform:translateX(0)}
 
-    @keyframes slideUp {
-      from { transform: translateY(110%); opacity: 0; }
-      to   { transform: translateY(0); opacity: 1; }
-    }
+/* ABOUT */
+.about-split{
+  display:grid;grid-template-columns:1fr 1.2fr;
+  gap:5rem;align-items:start;
+}
+.about-big-text{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(1.1rem,2.5vw,2rem);
+  text-transform:uppercase;
+  line-height:1.15;
+  color:var(--paper);opacity:0.9;
+}
+.about-big-text em{font-style:normal;color:var(--green)}
+.about-body{font-size:0.9rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
+.about-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  border:1px solid var(--border);margin-top:2.5rem;
+}
+.stat-box{
+  padding:1.4rem;border:1px solid var(--border);
+}
+.stat-num{
+  font-family:'Anton',sans-serif;font-size:2.2rem;
+  color:var(--white);line-height:1;margin-bottom:0.3rem;
+}
+.stat-label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
 
-    .hero-right { padding-bottom: 0.4rem; }
+/* CONTACT */
+.contact-section{
+  padding:7rem 2.5rem;
+  border-top:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.contact-big{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(3.5rem,10vw,11rem);
+  text-transform:uppercase;line-height:0.88;
+  margin-bottom:4rem;
+}
+.contact-big .stroke{color:transparent;-webkit-text-stroke:2px var(--paper)}
+.contact-row{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  flex-wrap:wrap;gap:2rem;
+}
+.contact-email{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(1rem,2.5vw,1.8rem);
+  text-transform:uppercase;
+  color:var(--paper);
+  border-bottom:1px solid var(--border);
+  padding-bottom:0.5rem;
+  transition:color .25s,border-color .25s;
+  display:inline-block;
+}
+.contact-email:hover{color:var(--green);border-color:var(--green)}
+.contact-links{display:flex;gap:2rem}
+.contact-links a{
+  font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.contact-links a:hover{color:var(--paper);border-color:var(--muted)}
 
-    .hero-desc {
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 360px;
-      margin-bottom: 2.5rem;
-      line-height: 1.9;
-      animation: fadeIn 1s ease 0.5s both;
-    }
+/* FOOTER */
+footer{
+  padding:1.4rem 2.5rem;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.65rem;letter-spacing:0.06em;color:var(--muted);
+}
+footer span{color:var(--green)}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
 
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      animation: fadeIn 1s ease 0.65s both;
-    }
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:1.2rem 1.2rem}
+  .nav-links{display:none}
+  .hero{padding:5rem 1.2rem 3rem;text-align:left}
+  .hero-bottom{left:1.2rem;right:1.2rem}
+  .section{padding:5rem 1.2rem}
+  .about-split{grid-template-columns:1fr;gap:3rem}
+  .contact-row{flex-direction:column;align-items:flex-start}
+  footer{flex-direction:column;gap:0.4rem;text-align:center}
+  .badge-2,.badge-4,.badge-7,.badge-8{display:none}
+  .badge-1{top:12%;left:2%}
+  .badge-3{top:12%;right:2%}
+  .badge-5{bottom:20%;left:2%}
+  .badge-6{bottom:20%;right:2%}
+  .project-row{grid-template-columns:40px 1fr}
+  .project-right{display:none}
+}
 
-    .btn-primary {
-      display: inline-block;
-      padding: 0.85rem 2.2rem;
-      background: var(--gold);
-      color: var(--bg);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.25s, transform 0.2s;
-    }
-    .btn-primary:hover { background: #8a6438; transform: translateY(-2px); }
-
-    .btn-ghost {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.25s;
-    }
-    .btn-ghost:hover { color: var(--text); }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 3rem; right: 3.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      z-index: 2;
-      animation: fadeIn 1.2s ease 1s both;
-    }
-    .hero-scroll span {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      writing-mode: vertical-rl;
-    }
-    .scroll-line {
-      width: 1px; height: 50px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      animation: scrollDrop 2s ease-in-out infinite;
-    }
-    @keyframes scrollDrop {
-      0%, 100% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-      50%       { transform: scaleY(1); opacity: 1; }
-    }
-
-    /* TICKER */
-    .ticker {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    .ticker-track {
-      display: inline-flex;
-      animation: tickerMove 18s linear infinite;
-    }
-    .ticker-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 1.5rem;
-      padding: 0 2rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .ticker-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-    @keyframes tickerMove {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    /* ABOUT */
-    .about {
-      padding: 8rem 3.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    .about-left { position: sticky; top: 8rem; }
-
-    .section-num {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 4vw, 4rem);
-      font-weight: 700;
-      line-height: 1.1;
-    }
-    .section-title em { font-style: italic; color: var(--gold); }
-
-    .about-right { padding-top: 0.5rem; }
-
-    .about-intro {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--text);
-      line-height: 1.6;
-      margin-bottom: 2rem;
-      opacity: 0.85;
-    }
-
-    .about-body {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.95;
-      margin-bottom: 1.5rem;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      margin-top: 3rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .skill-item {
-      padding: 1.2rem 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      color: var(--text);
-    }
-    .skill-item:nth-child(odd) { padding-right: 2rem; }
-    .skill-item::before {
-      content: '';
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-
-    /* WORK */
-    .work { padding: 8rem 3.5rem; }
-
-    .work-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 4rem;
-    }
-
-    .work-count {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .project-list { display: flex; flex-direction: column; }
-
-    .project-row {
-      display: grid;
-      grid-template-columns: 80px 1fr auto auto;
-      align-items: center;
-      gap: 2rem;
-      padding: 2rem 1rem;
-      border-top: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-row::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--gold-dim);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
-    }
-    .project-row:hover::before { transform: scaleX(1); }
-    .project-row:last-child { border-bottom: 1px solid var(--border); }
-
-    .project-num {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      position: relative;
-      z-index: 1;
-    }
-
-    .project-info { position: relative; z-index: 1; }
-
-    .project-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      transition: color 0.3s;
-    }
-    .project-row:hover .project-name { color: var(--gold); }
-
-    .project-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
-    }
-
-    .project-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 0.3rem 0.8rem;
-      position: relative;
-      z-index: 1;
-      white-space: nowrap;
-    }
-
-    .project-arrow {
-      font-size: 1.5rem;
-      color: var(--gold);
-      opacity: 0;
-      transform: translateX(-8px);
-      transition: opacity 0.3s, transform 0.3s;
-      position: relative;
-      z-index: 1;
-    }
-    .project-row:hover .project-arrow { opacity: 1; transform: translateX(0); }
-
-    /* CONTACT */
-    .contact {
-      padding: 8rem 3.5rem;
-      background: var(--surface);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-glow {
-      position: absolute;
-      top: -20%; right: -10%;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(166,124,78,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .contact-inner { position: relative; z-index: 1; }
-
-    .contact-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 6vw, 6rem);
-      font-weight: 700;
-      line-height: 1.0;
-      margin-bottom: 4rem;
-    }
-    .contact-heading em { font-style: italic; color: var(--gold); }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .contact-email-link {
-      display: inline-block;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-style: italic;
-      color: var(--text);
-      text-decoration: none;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 2rem;
-      transition: color 0.25s, border-color 0.25s;
-    }
-    .contact-email-link:hover { color: var(--gold); border-color: var(--gold); }
-
-    .contact-note {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.9;
-    }
-
-    .detail-row {
-      display: flex;
-      gap: 1.5rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .detail-key {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      width: 80px;
-      flex-shrink: 0;
-      padding-top: 0.18rem;
-    }
-    .detail-val {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    .detail-val a { color: var(--text); text-decoration: none; transition: color 0.2s; }
-    .detail-val a:hover { color: var(--gold); }
-
-    footer {
-      padding: 2rem 3.5rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    footer p { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--muted); }
-    .footer-dot { color: var(--gold); }
-
-    @media (max-width: 900px) {
-      nav { padding: 1.5rem 1.5rem; }
-      .hero { padding: 0 1.5rem 4rem; }
-      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-bg-text { font-size: 40vw; }
-      .hero-scroll { display: none; }
-      .about { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
-      .about-left { position: static; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .work { padding: 5rem 1.5rem; }
-      .project-row { grid-template-columns: 50px 1fr; }
-      .project-tag, .project-arrow { display: none; }
-      .contact { padding: 5rem 1.5rem; }
-      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; }
-    }
-  </style>
+@media(prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+}
+</style>
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+<nav>
+  <span class="nav-logo">RN — 2026</span>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:novoselskayaruslana@gmail.com" class="nav-cta">Hire me</a>
+</nav>
 
-  <nav>
-    <a href="#" class="nav-logo">R. Novoselska</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<section class="hero">
+  <div class="hero-grid-lines" aria-hidden="true"></div>
 
-  <section class="hero">
-    <div class="hero-bg-text">BRAND</div>
-    <div class="hero-grid">
-      <div class="hero-left">
-        <p class="hero-tag">Branding & Marketing</p>
-        <h1 class="hero-name">
-          <span class="line"><span>Ruslana</span></span>
-          <span class="line"><span>Novoselska</span></span>
-        </h1>
-      </div>
-      <div class="hero-right">
-        <p class="hero-desc">
-          Marketing strategist and brand thinker based in Vilnius — turning insights into visual identities and ideas into experiences people remember.
-        </p>
-        <div class="hero-actions">
-          <a href="#work" class="btn-primary">View Work</a>
-          <a href="#contact" class="btn-ghost">Get in touch →</a>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
+  <!-- Sticker badges -->
+  <div class="badge badge-pill b-green badge-1" aria-hidden="true">Content Strategy ★</div>
+  <div class="badge badge-pill b-outline badge-2" aria-hidden="true">Reddit Research</div>
+  <div class="badge badge-pill b-yellow badge-3" aria-hidden="true">300+ Partners</div>
+  <div class="badge badge-pill b-white badge-4" aria-hidden="true">SEO · AEO · GEO</div>
+  <div class="badge badge-pill b-red badge-5" aria-hidden="true">Influencer Marketing</div>
+  <div class="badge badge-pill b-outline badge-6" aria-hidden="true">WinWin.travel</div>
+  <div class="badge badge-pill b-green badge-7" aria-hidden="true">Brand Strategy</div>
+  <div class="badge badge-pill b-yellow badge-8" aria-hidden="true">VNO ✦ LT</div>
 
-  <div class="ticker">
-    <div class="ticker-track">
-      <span class="ticker-item"><span class="ticker-dot"></span>Brand Strategy</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Digital Marketing</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Visual Communication</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Content Creation</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Audience Research</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Brand Positioning</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Affiliate Marketing</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Influencer Marketing</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Brand Strategy</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Digital Marketing</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Visual Communication</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Content Creation</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Audience Research</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Brand Positioning</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Affiliate Marketing</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Influencer Marketing</span>
-    </div>
+  <div class="hero-name" aria-label="Ruslana Novoselska">
+    <div>RUSLANA</div>
+    <div class="line2">NOVOSELSKA</div>
   </div>
 
-  <section class="about" id="about">
-    <div class="about-left">
-      <p class="section-num">01 — About</p>
-      <h2 class="section-title">The<br>mind<br>behind<br>the<br><em>brand.</em></h2>
-    </div>
-    <div class="about-right">
-      <p class="about-intro">"I believe great brands don't just communicate — they make people feel something."</p>
-      <p class="about-body">
-        I'm a marketing student at Vilnius University specializing in global marketing, with a deep interest in brand strategy, digital marketing, and visual communication. I combine a strategic business mindset with a creative approach to storytelling and content creation.
-      </p>
-      <p class="about-body">
-        With hands-on experience in startup and student-led environments, I've contributed to brand growth, customer acquisition,affiliate marketing and influencer marketing initiatives — focused on audience research, brand positioning, and creating clear, visually engaging materials that connect.
-      </p>
-      <div class="skills-grid">
-        <span class="skill-item">Brand Strategy</span>
-        <span class="skill-item">Visual Communication</span>
-        <span class="skill-item">Digital Marketing</span>
-        <span class="skill-item">Content Creation</span>
-        <span class="skill-item">Audience Research</span>
-        <span class="skill-item">Affiliate Marketing</span>
-        <span class="skill-item">Brand Positioning</span>
-        <span class="skill-item">Influencer Marketing</span>
-      </div>
-    </div>
-  </section>
+  <p class="hero-sub">Marketing Specialist · Vilnius, Lithuania</p>
 
-  <section class="work" id="work">
-    <div class="work-header">
-      <div>
-        <p class="section-num">02 — Work</p>
-        <h2 class="section-title">Selected<br><em>Projects</em></h2>
+  <div class="hero-bottom">
+    <span class="hero-location">VNO / LT · Available for work</span>
+    <span class="hero-scroll">Scroll</span>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-star">✦</span> Brand Strategy</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Reddit Research</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Influencer Outreach</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Content Creation</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> SEO / AEO</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Affiliate Marketing</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Pain-Point Research</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Creator Partnerships</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Brand Strategy</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Reddit Research</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Influencer Outreach</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Content Creation</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> SEO / AEO</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Affiliate Marketing</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Pain-Point Research</span>
+    <span class="ticker-item"><span class="ticker-star">✦</span> Creator Partnerships</span>
+  </div>
+</div>
+
+<section class="section" id="work">
+  <p class="section-label reveal">Selected Work</p>
+  <h2 class="section-title reveal">Case<br><em>Studies.</em></h2>
+
+  <div class="project-list">
+
+    <div class="project-row reveal" onclick="window.open('#','_blank')">
+      <span class="project-n">001</span>
+      <div class="project-info">
+        <p class="project-name">Reddit Pain-Points</p>
+        <p class="project-desc">Built a Reddit data pipeline to surface unmet traveler needs in pet-friendly and accessible travel — the language no keyword tool catches.</p>
       </div>
-      <p class="work-count">1 project</p>
+      <div class="project-right">
+        <span class="project-tag live">WinWin.travel</span>
+        <span class="project-tag">Research · Strategy</span>
+        <span class="project-arr">→</span>
+      </div>
     </div>
-    <div class="project-list">
-      <a class="project-row" href="https://drive.google.com/file/d/12pmZebayLjtqySdDqX-n0u7bqduI6jTQ/view?usp=sharing" target="_blank">
-        <span class="project-num">001</span>
-        <div class="project-info">
-          <p class="project-name">Roseveil</p>
-          <p class="project-desc">Conceptual organic skincare brand — identity, visual direction & marketing concepts</p>
-        </div>
+
+    <div class="project-row reveal" onclick="window.open('#','_blank')">
+      <span class="project-n">002</span>
+      <div class="project-info">
+        <p class="project-name">300+ Partner Network</p>
+        <p class="project-desc">Own a creator and affiliate network end-to-end — sourcing, vetting, briefs, and campaign management across 300+ partners.</p>
+      </div>
+      <div class="project-right">
+        <span class="project-tag live">WinWin.travel</span>
+        <span class="project-tag">Partnerships · Outreach</span>
+        <span class="project-arr">→</span>
+      </div>
+    </div>
+
+    <div class="project-row reveal" onclick="window.open('#','_blank')">
+      <span class="project-n">003</span>
+      <div class="project-info">
+        <p class="project-name">Machi Matcha</p>
+        <p class="project-desc">Full 21-day Instagram + Pinterest launch calendar for a fictional indie matcha café — 28 posts, real captions, visual direction.</p>
+      </div>
+      <div class="project-right">
+        <span class="project-tag">Concept Project</span>
+        <span class="project-tag">Content · Social</span>
+        <span class="project-arr">→</span>
+      </div>
+    </div>
+
+    <div class="project-row reveal" onclick="window.open('https://drive.google.com/file/d/12pmZebayLjtqySdDqX-n0u7bqduI6jTQ/view?usp=sharing','_blank')">
+      <span class="project-n">004</span>
+      <div class="project-info">
+        <p class="project-name">Roseveil</p>
+        <p class="project-desc">Full brand strategy for a conceptual organic skincare brand — identity system, 3 messaging pillars, and product line direction.</p>
+      </div>
+      <div class="project-right">
+        <span class="project-tag">Concept Project</span>
         <span class="project-tag">Brand Identity</span>
-        <span class="project-arrow">→</span>
+        <span class="project-arr">→</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="about" style="border-top:1px solid var(--border)">
+  <p class="section-label reveal">About</p>
+  <div class="about-split">
+    <div>
+      <h2 class="about-big-text reveal">
+        I find what people<br>
+        <em>actually need</em><br>
+        and build content<br>
+        that answers it.
+      </h2>
+      <div class="about-stats reveal">
+        <div class="stat-box">
+          <div class="stat-num">300+</div>
+          <div class="stat-label">Creator partners</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">4.0</div>
+          <div class="stat-label">GPA — Vilnius Uni</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Case studies</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">Jan<br><span style="font-size:1.4rem">'27</span></div>
+          <div class="stat-label">Graduating</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="about-body reveal">Marketing Specialist at WinWin.travel — an AI-powered booking platform for pet-friendly and accessible accommodation. My work sits at the intersection of research, partnerships, and content strategy.</p>
+      <p class="about-body reveal">I run Reddit pain-point research workflows that surface what travelers actually say they need — not what keyword tools guess. I manage a 300+ creator and affiliate network end-to-end, and I audit and edit blog content against SEO, AEO, GEO, and LLMO guidelines.</p>
+      <p class="about-body reveal">Studying BBM Global Marketing at Vilnius University (graduating January 2027). My thesis examines how negative publicity affects purchase intention for virtual vs human influencers.</p>
+      <p class="about-body reveal" style="color:var(--paper)">Based in Vilnius, Lithuania. Open to remote collaborations worldwide.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <h2 class="contact-big reveal">
+    LET'S<br>
+    <span class="stroke">WORK.</span>
+  </h2>
+  <div class="contact-row">
+    <div>
+      <a href="mailto:novoselskayaruslana@gmail.com" class="contact-email reveal">
+        novoselskayaruslana@gmail.com
       </a>
     </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="contact-glow"></div>
-    <div class="contact-inner">
-      <p class="contact-eyebrow">03 — Contact</p>
-      <h2 class="contact-heading">Let's<br>make<br>something<br><em>great.</em></h2>
-      <div class="contact-grid">
-        <div>
-          <a href="mailto:novoselskayaruslana@gmail.com" class="contact-email-link">novoselskayaruslana@gmail.com</a>
-          <p class="contact-note">Open to brand projects, marketing collaborations, and creative partnerships. Based in Vilnius — available for remote work worldwide.</p>
-        </div>
-        <div>
-          <div class="detail-row">
-            <span class="detail-key">Location</span>
-            <span class="detail-val">Vilnius, Lithuania</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-key">Education</span>
-            <span class="detail-val">Vilnius University — Global Marketing</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-key">Available</span>
-            <span class="detail-val">Collaborations & Projects</span>
-          </div>
-          <div class="detail-row">
-  <span class="detail-key">LinkedIn</span>
-  <span class="detail-val">
-    <a href="https://www.linkedin.com/in/ruslana-novoselska/" target="_blank">linkedin.com/in/ruslana-novoselska
-</a>
-  </span>
-</div>
-          <div class="detail-row">
-            <span class="detail-key">Email</span>
-            <span class="detail-val"><a href="mailto:novoselskayaruslana@gmail.com">novoselskayaruslana@gmail.com</a></span>
-          </div>
-        </div>
-      </div>
+    <div class="contact-links reveal">
+      <a href="https://www.linkedin.com/in/ruslana-novoselska/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://novoselskayaruslana-glitch.github.io" target="_blank" rel="noopener">Portfolio v1</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2026 Ruslana Novoselska <span class="footer-dot">·</span> All rights reserved</p>
-    <p>Branding <span class="footer-dot">·</span> Marketing <span class="footer-dot">·</span> Vilnius</p>
-  </footer>
+<footer>
+  <span>© 2026 Ruslana Novoselska <span>✦</span> Vilnius, LT</span>
+  <span>Marketing Specialist <span>✦</span> BBM Global Marketing</span>
+</footer>
 
-  <script>
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
+<script>
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+    }
+  });
+},{threshold:0.1});
+reveals.forEach(el => observer.observe(el));
 
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top = my + 'px';
-    });
-
-    (function animateRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animateRing);
-    })();
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.about-right, .project-row, .contact-inner').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      observer.observe(el);
-    });
-  </script>
+// Badge hover wobble
+document.querySelectorAll('.badge').forEach(b => {
+  const baseTransform = b.style.transform || window.getComputedStyle(b).transform;
+  b.addEventListener('mouseenter', () => {
+    b.style.transition = 'transform .2s ease';
+  });
+});
+</script>
 </body>
 </html>
